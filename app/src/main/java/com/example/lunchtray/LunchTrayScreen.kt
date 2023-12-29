@@ -43,6 +43,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.lunchtray.datasource.DataSource
 import com.example.lunchtray.ui.AccompanimentMenuScreen
+import com.example.lunchtray.ui.CheckoutScreen
 import com.example.lunchtray.ui.EntreeMenuScreen
 import com.example.lunchtray.ui.OrderViewModel
 import com.example.lunchtray.ui.SideDishMenuScreen
@@ -123,6 +124,12 @@ fun LunchTrayApp(
                     onNextButtonClicked = { navController.navigate(LunchTrayScreen.Checkout.name) },
                     onSelectionChanged = { viewModel.updateAccompaniment(it) }
                 )
+            }
+            composable(LunchTrayScreen.Checkout.name){
+                CheckoutScreen(
+                    orderUiState = uiState,
+                    onNextButtonClicked = { /*TODO*/ },
+                    onCancelButtonClicked = { cancelOrder(viewModel, navController) })
             }
         }
     }
