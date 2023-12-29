@@ -27,6 +27,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.lunchtray.datasource.DataSource
 import com.example.lunchtray.ui.AccompanimentMenuScreen
@@ -53,6 +54,7 @@ fun LunchTrayApp(
     navController: NavHostController = rememberNavController()
 ) {
 
+    val backStackEntry by navController.currentBackStackEntryAsState()
     // Create ViewModel
 //    val viewModel: OrderViewModel = viewModel()
 
