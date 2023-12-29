@@ -64,7 +64,7 @@ fun LunchTrayAppbar(currentScreen: LunchTrayScreen, canNavigateBack:Boolean,navi
     CenterAlignedTopAppBar(
         title = { Text(text = stringResource(id = currentScreen.title)) },
         navigationIcon = {
-            if (canNavigateBack) IconButton(onClick = { navigateUp }) {
+            if (canNavigateBack) IconButton(onClick = navigateUp ) {
                 Icon(
                     imageVector = Icons.Filled.ArrowBack,
                     contentDescription = stringResource(id = R.string.back_button )
@@ -98,7 +98,7 @@ fun LunchTrayApp(
         // TODO: Navigation host
         NavHost(navController = navController, startDestination = LunchTrayScreen.Start.name, modifier = Modifier.padding(innerPadding) ){
             composable(LunchTrayScreen.Start.name){
-                StartOrderScreen(onStartOrderButtonClicked = { /*TODO*/ })
+                StartOrderScreen(onStartOrderButtonClicked = { navController.navigate(LunchTrayScreen.Entree.name) })
             }
             composable(LunchTrayScreen.Entree.name){
                 EntreeMenuScreen(
