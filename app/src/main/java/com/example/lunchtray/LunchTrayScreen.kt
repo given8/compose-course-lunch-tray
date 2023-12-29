@@ -104,24 +104,24 @@ fun LunchTrayApp(
                 EntreeMenuScreen(
                     options = DataSource.entreeMenuItems,
                     onCancelButtonClicked = { cancelOrder(viewModel,navController) },
-                    onNextButtonClicked = { /*TODO*/ },
-                    onSelectionChanged = {/*TODO*/ }
+                    onNextButtonClicked = { navController.navigate(LunchTrayScreen.SideDish.name) },
+                    onSelectionChanged = { viewModel.updateEntree(it) }
                 )
             }
             composable(LunchTrayScreen.SideDish.name){
                 SideDishMenuScreen(
                     options = DataSource.sideDishMenuItems,
                     onCancelButtonClicked = { cancelOrder(viewModel,navController) },
-                    onNextButtonClicked = { /*TODO*/ },
-                    onSelectionChanged = { /*TODO*/ }
+                    onNextButtonClicked = { navController.navigate(LunchTrayScreen.Accompaniment.name) },
+                    onSelectionChanged = { viewModel.updateSideDish(it) }
                 )
             }
             composable(LunchTrayScreen.Accompaniment.name){
                 AccompanimentMenuScreen(
                     options = DataSource.accompanimentMenuItems,
                     onCancelButtonClicked = { cancelOrder(viewModel,navController) },
-                    onNextButtonClicked = { /*TODO*/ },
-                    onSelectionChanged = { /*TODO*/ }
+                    onNextButtonClicked = { navController.navigate(LunchTrayScreen.Checkout.name) },
+                    onSelectionChanged = { viewModel.updateAccompaniment(it) }
                 )
             }
         }
