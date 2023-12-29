@@ -103,7 +103,7 @@ fun LunchTrayApp(
             composable(LunchTrayScreen.Entree.name){
                 EntreeMenuScreen(
                     options = DataSource.entreeMenuItems,
-                    onCancelButtonClicked = { /*TODO*/ },
+                    onCancelButtonClicked = { cancelOrder(viewModel,navController) },
                     onNextButtonClicked = { /*TODO*/ },
                     onSelectionChanged = {/*TODO*/ }
                 )
@@ -111,7 +111,7 @@ fun LunchTrayApp(
             composable(LunchTrayScreen.SideDish.name){
                 SideDishMenuScreen(
                     options = DataSource.sideDishMenuItems,
-                    onCancelButtonClicked = { /*TODO*/ },
+                    onCancelButtonClicked = { cancelOrder(viewModel,navController) },
                     onNextButtonClicked = { /*TODO*/ },
                     onSelectionChanged = { /*TODO*/ }
                 )
@@ -119,7 +119,7 @@ fun LunchTrayApp(
             composable(LunchTrayScreen.Accompaniment.name){
                 AccompanimentMenuScreen(
                     options = DataSource.accompanimentMenuItems,
-                    onCancelButtonClicked = { /*TODO*/ },
+                    onCancelButtonClicked = { cancelOrder(viewModel,navController) },
                     onNextButtonClicked = { /*TODO*/ },
                     onSelectionChanged = { /*TODO*/ }
                 )
@@ -127,3 +127,8 @@ fun LunchTrayApp(
         }
     }
 }
+private fun cancelOrder(viewModel: OrderViewModel,navController: NavHostController){
+    viewModel.resetOrder()
+    navController.popBackStack(LunchTrayScreen.Start.name,false)
+}
+
